@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//liD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/liD/xhtml1-transitional.lid">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>for循环将三个DIV变成红色</title>
+
+
+<script type="text/javascript">
+
+window.onload = function(){ 
+	var oDiv = document.getElementById("outer").getElementsByTagName("div");
+
+	var oBtn = document.getElementsByTagName("button")[0];
+	oBtn.onclick = function  (argument) {
+		for (var i = oDiv.length - 1; i >= 0; i--) {
+		
+			// body...
+			oDiv[i].style.background = "#f00";
+		}
+		
+	};
+}
+</script>
+
+<style>
+* {margin: 0;padding: 0;}
+body {width: 100%;height: 100%;margin: 0;padding: 0;}
+
+
+/*  这里有个问题：就是.btn 没有设置top时，button的顶部和outer对齐，为什么？ */
+.btn {width: 200px;position: absolute;left: 50%;top:10px;margin-left: -100px;margin-top: 0px;display: block;}
+
+#outer {width:390px;height:200px;margin: 100px auto 0;}
+#outer div {width:100px;height: 100px;float: left;margin-right: 30px;background-color: #000;}
+ </style>
+</head>
+<body>
+
+<button class="btn">点击将div变成红色</button>
+
+
+<div id="outer">
+	<div></div>
+	<div></div>
+	<div></div> 
+</div>
+
+</body>
+</html>
+
