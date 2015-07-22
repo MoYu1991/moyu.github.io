@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>demo</title>
+<link rel="stylesheet" href="css/reset.css" />
+<style>
+div {margin:50px;}
+p {margin: 8px 14px;}
+</style>
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("button").click(function(){
+    x=$("p").offset();
+    $("#span1").text(x.left);
+    $("#span2").text(x.top);
+  });
+});
+</script>
+
+
+</head>
+<body>
+	<div>
+	<p>本段落的偏移是 <span id="span1">unknown</span> left 和 <span id="span2">unknown</span> top。</p>
+<button>获得 offset</button>
+</div>
+</body>
+</html>
