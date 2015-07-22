@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>控制div属性</title>
+<style>
+#outer{width:500px;margin:0 auto;padding:0;text-align:center;}
+#div1{width:100px;height:100px;background:black;margin:10px auto;display:block;}
+</style>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+<div class="bread" id="daohang"> 					
+	<ul class="breadcrumb">
+		<li> <i class="icon-home home-icon"></i> <a href="#">您所在位置</a> </li>
+		<li class="active">系统首页</li>
+	</ul>
+
+	<div class="user"> 
+		<div id="welcome">
+			<span class="icon-user" ></span><span> &nbsp;XX用户，欢迎您</span></div>
+		<div class="timebox"> 
+				<span >当前时间：</span>
+				<div id="spanTime"></div>
+				
+		</div>
+			
+			
+		<div class="loginOut">
+		<button class="button">退出</button>
+		</div>
+	</div>
+	
+</div>
+<script> 
+var strUrl=window.location.href;
+var arrUrl=strUrl.split("/");
+var strPage=arrUrl[arrUrl.length-1];
+var ss = document.getElementById('welcome');
+if (strPage = '111.html'){
+
+	var ss = document.getElementById('welcome');
+	var tt = $("#welcome");
+	console.log("tt=" +tt);
+	console.log('ss='+ss);
+	ss.style.display = 'none';
+	}
+
+</script> 
+</body>
+</html>
