@@ -1,0 +1,134 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>轮播图</title> 
+    <script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <style>
+    body {background: #444;}
+    a , a:hover {text-decoration: none;}
+    h2 {font-size: 28px;text-align: center;font-weight: bold;margin:50px;font-family: "微软雅黑";color: #fff;}
+    .wrap {width: 100%;background: #57BEB9;padding: 30px 0;}
+    .main {width:900px;margin: 0 auto;height: 500px;overflow: hidden;position: relative; }
+    .main #btnLeft ,#btnRight{display:block;width:35px;height:57px;position: absolute;top: 222px;}
+    #btnLeft {left: 0;background: url(images/left_ar.png) no-repeat;}
+	#btnRight {background: url(images/right_ar.png) no-repeat;right: 0;}
+	.main .box {width:800px;height: 500px;margin: 0 auto;position: relative;}
+	.main .box img {display:block;width: 800px;height: 500px;position:absolute;left: 0;top: 0;filter: alpha(opacity=0);opacity: 0;}
+	.main .box img:first-child {filter:alpha(opacity=1);opacity: 100;}
+	.main .page {position: absolute;right: 100px;bottom: 30px;}
+	.main .page a {display: inline-block;width:20px;height: 20px;background: #eee;text-align: center;line-height: 20px;color: #000;}
+	.main .page  .active {background:#f00;color:#fff;}
+    p {color: #fff;font-size:14px;text-align:center;margin-top: 50px;line-height: 20px;}
+    </style>
+    <script>
+    $(function(){
+    	var aPage = $(".main .page a");  	//分页按钮
+    	var aImg = $(".main .box img");   	//图片集合
+    	var iSize = aImg.size(); 			//图像个数
+    	var index = 0;		//切换索引
+    	var t;
+
+    	$("#btnLeft").click(function(){
+    		index--;
+    		if(index<0){
+    			index=iSize-1;
+    		}
+    		change(index);
+    	});
+    	$("#btnRight").click(function(){
+    		index++;
+    		if(index>iSize-1){
+			index=0;
+		}
+    		change(index);
+    		console.log("right=" +index);
+    	});
+    	aPage.click(function(){
+    		index = $(this).index();
+    		change(index);
+    	});
+    	// function change(index){
+    	// 	aPage.removeClass("active");
+    	// 	aPage.eq(index).addClass("active");
+    	// 	aImg.stop();
+    	// 	aImg.eq(index).siblings().animate({opacity:0},1000);
+    	// 	aImg.eq(index).animate({opacity:1},1000);
+    	// 	console.log(index);
+    	// };
+    	function change(index){
+		aPage.removeClass('active');
+		aPage.eq(index).addClass('active');
+		aImg.stop();
+		//隐藏除了当前元素，所以图像
+		aImg.eq(index).siblings().animate({
+			opacity:0
+		},1000)
+		//显示当前图像
+		aImg.eq(index).animate({
+			opacity:1
+		},1000)
+	}
+    	function autoshow (){
+    		index++;
+    		if(index<=iSize-1)
+    		{
+    			change(index);
+    		}
+    		else {
+    			index = 0;
+    			change(index);
+    		}
+    	};
+    	var int = setInterval(autoshow,2000);
+
+    	// function clearInt(){
+    	// 	$("#btnLeft , #btnRight, .page a").hover(function(){
+    	// 		clearInterval(int);
+    	// 	},function(){
+    	// 		setInterval(autoShow,2000);
+    	// 	});
+    	// };
+    	// clearInt();
+    function clearInt() {
+		$('#btnLeft,#btnRight,.page a').mouseover(function() {
+			clearInterval(int);
+		})
+	
+	}
+	function setInt() {
+		$('#btnLeft,#btnRight,.page a').mouseout(function() {
+			int=setInterval(autoshow,3000);
+		})
+	}
+	clearInt();
+	setInt();
+
+    	
+    	
+    })
+    </script>
+</head>
+<body>
+	<h2>jQuery图片淡入淡出自动切换焦点图</h2>
+	<div class="wrap">
+	<div class="main">
+		<a href="javascript:void(0);" id="btnLeft"></a>
+		<a href="javascript:void(0);" id="btnRight"></a>
+
+    <div class="box">
+    	<img src="images/1.jpg">
+    	<img src="images/2.jpg">
+    	<img src="images/3.jpg">
+    </div>
+    <div class="page">
+    	<a href="javscript:void(0);" class="active">1</a>
+    	<a href="javscript:void(0);">2</a>
+    	<a href="javscript:void(0);">3</a>
+    </div>
+	</div>
+	</div>
+    <P>该JS特效代码基于jQuery编写，当鼠标放到图片区域时，停止自动切换， 鼠标移开，自动切换焦点图代码。<br/>（兼容测试：IE7及以上、Firefox、Chrome、Opera、Safari、360等主流浏览器）</P>
+</body>
+</html>
