@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery学员列表左右滑动切换特效</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+<body class="keBody">
+<h1 class="keTitle">jQuery学员列表左右滑动切换特效</h1>
+<div class="kePublic">
+<!--效果html开始-->
+<div class="bodyCon08">
+  <div class="students">
+    <div id="four_flash">
+      <div class="flashBg">
+        <ul class="mobile">	//6个li
+          <li> <img src="images/senke_xy00.jpg" />
+            <dd>高同学</dd>
+            <p>2013年CPA暑期班学员，一年通过5门课程</p>
+            <a href="#"></a> </li>
+          <li> <img src="images/senke_xy01.jpg" />
+            <dd>李同学</dd>
+            <p>2014年CPA周末旗舰班学员；1年通过4门课程</p>
+            <a href="#"></a> </li>
+          <li> <img src="images/senke_xy02.jpg" />
+            <dd>丁同学</dd>
+            <p>现就职某会计师师事务所<br/>
+              2012年CPA学员，3年通过6门课程</p>
+            <a href="#"></a> </li>
+          <li> <img src="images/senke_xy03.jpg" />
+            <dd>宋同学</dd>
+            <p>2013年会计证、CPA长线周末班学员，2014年通过4门课程；</p>
+            <a href="#"></a> </li>
+          <li> <img src="images/senke_xy04.jpg" />
+            <dd>战同学</dd>
+            <p>2012年北京会计初级金榜，2014年会计中级高分一次通过</p>
+            <a href="#"></a> </li>
+          <li> <img src="images/senke_xy05.jpg" />
+            <dd>于同学</dd>
+            <p>2014年会计中级学员，1次性通过中级全科</p>
+            <a href="#"></a> </li>
+        </ul>
+      </div>
+      <div class="but_left"><img src="images/qianxleft.png" /></div>
+      <div class="but_right"><img src="images/qianxr.png" /></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript">
+//学员
+var index5=0;
+$("#four_flash .but_right img").click(function(){
+	index5++;	//图片的位置索引
+	var len=$(".flashBg ul.mobile li").length;	//图片个数。现在Len=6
+	if(index5+5>len){	//当超过6时。ul停止动画，添加ul的HTML内容。
+		$("#four_flash .flashBg ul.mobile").stop().append($("ul.mobile").html());
+	}
+	$("#four_flash .flashBg ul.mobile").stop().animate({left:-index5*326},1000);
+	console.log(index5);
+	});
+
+	
+$("#four_flash .but_left img").click(function(){
+	if(index5==0){
+		$("ul.mobile").prepend($("ul.mobile").html());
+		$("ul.mobile").css("left","-1380px");
+		index5=6
+	}
+	index5--;
+	$("#four_flash .flashBg ul.mobile").stop().animate({left:-index5*326},1000);
+	console.log(index5);
+	});
+</script>
+<!--效果html结束-->
+<div class="clear"></div>
+</div>
+
+</body>
+</html>
