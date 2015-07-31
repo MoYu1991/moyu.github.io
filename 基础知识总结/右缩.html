@@ -1,0 +1,88 @@
+<!doctype html> 
+<html> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>yousuo</title> 
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+	<style>
+		.header {width:100%;height: 100px;background-color: red;}
+		.side {width:20%;position: absolute;top:100px;bottom:50px;background-color: green;display: inline-block;float: left;}
+		.btn {width: 30px;height: 80px;background-color: #ddd;position: absolute;left: 20%;z-index: 2;top:50%;}
+		.content {width:80%;position: absolute;top: 100px;bottom: 50px;background-color: orange;display: inline-block;float:right;right: 0;}
+		.content .table {width: 100%;height: 200px;background-color: #eee;bottom: 0;position: absolute;}
+		.content .table_btn {width:80px;height: 30px;background-color: #ddd;position: absolute;bottom:200px;left:50%;margin-left: -40px;}
+		.footer {width: 100%;height: 50px;background-color: yellow;position: absolute;bottom: 0;}
+	</style>
+	<script>
+		$(function(){
+			var i = 0;
+			var j = 0;	
+				$(".btn").click(function(){
+
+			switch (i){
+				case 0:
+				// $(".side").animate({left:"-20%"});
+					// $(".content").animate({left:"0"});
+					// $(".content").animate({width:"100%"});
+					$(".side").animate({width:"0"});
+					$(".btn").animate({left:"0"});
+					$(".content").animate({width:"100%"});
+					i=1;
+					break;
+				case 1:
+				$(".side").animate({width:"20%"});
+				$(".btn").animate({left:"20%"});
+					$(".content").animate({width:"80%"});
+					i=0;
+					break;
+					
+				default:
+				break;
+				
+			}
+				
+    			});//btn
+
+			$(".table_btn").click(function(){
+
+			switch (j){
+				case 0:
+				// $(".side").animate({left:"-20%"});
+					// $(".content").animate({left:"0"});
+					// $(".content").animate({width:"100%"});
+					$(".table").animate({height:"0"});
+					$(".table_btn").animate({bottom:"0"});
+					// $(".content").animate({height:"100%"});
+					j=1;
+					break;
+				case 1:
+				$(".table").animate({height:"200px"});
+				$(".table_btn").animate({bottom:"200px"});
+					// $(".content").animate({width:"80%"});
+					j=0;
+					break;
+					
+				default:
+				break;
+				
+			}
+				
+    			});//table_btn
+    });//$(fucntion)
+	</script>
+</head>
+<body>
+	<div class="header">我是头部</div>
+	<div class="side">我是侧边栏
+		
+	</div>
+	<div class="btn">我是右缩</div>
+
+	<div class="content">我是主体
+		<div class="table">我是表格</div>
+		<div class="table_btn">我是往下缩</div>
+	</div>
+	<div class="footer">我是底部</div>
+</body>
+</html>
