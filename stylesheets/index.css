@@ -1,4 +1,4 @@
-.kePublic{ background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%); padding:50px;}
+.kePublic{ background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%); padding:50px;height:315px;}
 nav {
   max-width: 960px;
   mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
